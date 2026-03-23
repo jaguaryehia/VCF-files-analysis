@@ -1,0 +1,32 @@
+import pandas as pd
+
+df=pd.read_csv("Project+2+-+Cars+Dataset.csv")
+print(df.shape)
+
+# print(df.isnull().sum())
+df['Make'].fillna(df['Make'].mode(), inplace=True)
+df['Model'].fillna(df['Model'].mode(), inplace=True)
+df['Type'].fillna(df['Type'].mode(), inplace=True)
+df['Origin'].fillna(df['Origin'].mode(), inplace=True)
+df['DriveTrain'].fillna(df['DriveTrain'].mode(), inplace=True)
+df['MSRP'].fillna(df['MSRP'].mode()[0], inplace=True)
+df['Invoice'].fillna(df['Invoice'].mode(), inplace=True)
+df['EngineSize'].fillna(df['EngineSize'].mean(), inplace=True)
+df['Cylinders'].fillna(df['Cylinders'].mean(), inplace=True)
+df['Horsepower'].fillna(df['Horsepower'].mean(), inplace=True)
+df['MPG_City'].fillna(df['MPG_City'].mean(), inplace=True)
+df['MPG_Highway'].fillna(df['MPG_Highway'].mean(), inplace=True)
+df['Weight'].fillna(df['Weight'].mean(), inplace=True)
+df['Wheelbase'].fillna(df['Wheelbase'].mean(), inplace=True)
+df['Length'].fillna(df['Length'].mean(), inplace=True)
+print(df.isnull().sum())
+print(df)
+print(df['Make'].value_counts())
+print(df[df['Origin'].isin(['Asia', 'Europe'])])
+print(df['Origin'].value_counts())
+df2=df[~(df['Weight']>4000)]
+print(df2)
+print(df2.shape)
+df3= df['MPG_City'] =  df['MPG_City'].apply(lambda x:x+3)
+print(df3)
+
